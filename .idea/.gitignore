@@ -1,8 +1,6 @@
-# Default ignored files
-/shelf/
-/workspace.xml
-# Editor-based HTTP Client requests
-/httpRequests/
-# Datasource local storage ignored files
-/dataSources/
-/dataSources.local.xml
+venv 
+softech/__pychache__
+.idea
+product/migrations/__pychache__
+product/__pychache__
+db.sqlite3
