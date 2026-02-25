@@ -1,6 +1,13 @@
-venv
-ykz_market/__pychache__
+venv/
+.pylintrc
+__pycache__/
+
+.vscode
 .idea
-product/migrations/__pychache__
-product/__pychache__
+.env
+django.log
+security.log
+
 db.sqlite3
+media/
+debug.log
