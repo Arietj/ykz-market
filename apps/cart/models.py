@@ -4,6 +4,7 @@ from apps.accounts.models import User
 from apps.product.models import Product, SubCategory, Category
 
 # Create your models here.
+User = settings.AUTH_USER_MODEL
 
 class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='cart')

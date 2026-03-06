@@ -18,13 +18,23 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 from apps.product.urls import router as product_router
+from apps.cart.urls import default_router as cart_router
+from apps.orders.urls import default_router as orders_router
+from apps.accounts.views import RegisterAPIView
+from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
+
 
 main_router = routers.DefaultRouter()
 
 main_router.registry.extend(product_router.registry)
-
+main_router.registry.extend(cart_router.registry)
+main_router.registry.extend(orders_router.registry)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("api/v1/", include(main_router.urls)),
+    path("api/v1/register/", RegisterAPIView.as_view(), name="register"),
+    path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
+    path('api/schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
+    path('api/schema/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
 ]

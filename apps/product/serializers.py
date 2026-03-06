@@ -37,7 +37,7 @@ class SubCategorySerializer(serializers.ModelSerializer):
         return super().create(validated_data)
 
 class CategoryDetailSerializer(serializers.ModelSerializer):
-    sub_categories = SubCategorySerializer(many=True, read_only=True)
+    sub_categories = SubCategorySerializer()
     class Meta:
         model = Category
         fields = ('sub_categories',)
@@ -50,7 +50,7 @@ class CategoryDetailSerializer(serializers.ModelSerializer):
 
 class ProductSerializer(serializers.ModelSerializer):
     category_detail = CategoryDetailSerializer(read_only=True)
-    sub_categories = SubCategorySerializer(many=True, read_only=True)
+    sub_categories = SubCategorySerializer()
 
     class Meta:
         model = Product
