@@ -12,7 +12,7 @@ class OrderItemSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = OrderItem
-        fields = ('id', 'product', 'product_name', 'quantity', 'price', 'total_price')
+        fields = ('id', 'product', 'product_name', 'quantity', 'price', 'total_price', 'sub_category', 'category')
 
 
     def get_product_name(self, obj):

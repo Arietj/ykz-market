@@ -41,5 +41,8 @@ class OrderViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.Retrie
 
     
 class OrderItemViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
-    queryset = OrderItem.objects.all()
     serializer_class = OrderItemSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    
+    def get_queryset(self):
+        return OrderItem.objects.filter(order__user=self.request.user)
